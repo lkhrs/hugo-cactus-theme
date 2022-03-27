@@ -34,7 +34,7 @@
         {{ if .Params.Cover }}
         {{ $featuredImage := partial "helpers/featured-image" . }}
         <figure class="figure text-center col-md-10">
-             {{ partial "helpers/wrapped-image" (dict "alt" .Title "image" $featuredImage "page" .Page "class" "img-fluid" "noImageWrapper" "true") }}
+             {{ partial "helpers/wrapped-image" (dict "alt" .Title "image" $featuredImage "page" .Page "class" "img-fluid" "noImageWrapper" "true" "loading" "eager") }}
             {{ if .Params.CoverCaption }}
             <figcaption class="figure-caption center">{{ .Params.CoverCaption | markdownify }}</figcaption>
             {{ end }}
