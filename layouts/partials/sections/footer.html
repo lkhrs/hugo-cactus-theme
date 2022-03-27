@@ -1,0 +1,76 @@
+<footer class="py-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <!-- Removing footer logo for now and centering links -->
+            <!-- <div class="col mx-auto text-center text-lg-start mx-lg-0">
+                <a class="d-inline-block" href="{{ site.Home.RelPermalink }}">
+                    {{ $logo := resources.Get "images/logo.svg" }}
+                    <div class="text-primary" style="width: 45px;">
+                        {{ $logo.Content | safeHTML }}
+                    </div>
+                </a>
+            </div> -->
+            <div class="col-auto">
+                <ul class="list-unstyled d-flex flex-wrap align-items-center text-center text-lg-end">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    {{ if .HasChildren }}
+                    <li class="nav-item {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+                        <a class="nav-link" href="#">
+                            {{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    <ul class="sub-menu">
+                        {{ range .Children }}
+                        <li class="nav-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                            <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ .URL }}">
+                            {{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.footer }}
+                    {{ if .HasChildren }}
+                    <li class="nav-item {{ if $currentPage.HasMenuCurrent "footer" . }}active{{ end }}">
+                        <a class="nav-link" href="#">
+                            {{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    <ul class="sub-menu">
+                        {{ range .Children }}
+                        <li class="nav-item {{ if $currentPage.IsMenuCurrent "footer" . }}active{{ end }}">
+                            <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ .URL }}">
+                            {{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mb-5"></div>
+    <div class="container">
+        <div class="row">
+            <p class="text-center text-muted font-monospace">
+                © Luke Harris {{ now.Year }}
+            </p>
+        </div>
+</footer>

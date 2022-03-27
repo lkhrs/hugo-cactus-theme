@@ -1,0 +1,206 @@
+@import "variables";
+
+// Configuration
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/utilities";
+
+// Layout & components
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/containers";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+// @import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+// @import "bootstrap/dropdown";
+// @import "bootstrap/button-group";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+// @import "bootstrap/card";
+// @import "bootstrap/accordion";
+// @import "bootstrap/breadcrumb";
+// @import "bootstrap/pagination";
+// @import "bootstrap/badge";
+// @import "bootstrap/alert";
+// @import "bootstrap/progress";
+// @import "bootstrap/list-group";
+// @import "bootstrap/close";
+// @import "bootstrap/toasts";
+// @import "bootstrap/modal";
+// @import "bootstrap/tooltip";
+// @import "bootstrap/popover";
+// @import "bootstrap/carousel";
+// @import "bootstrap/spinners";
+// @import "bootstrap/offcanvas";
+
+// Helpers
+@import "bootstrap/helpers";
+
+// Utilities
+@import "bootstrap/utilities/api";
+
+// Fonts
+
+.font-base {
+    font-family: $font-family-base;
+}
+
+article {
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 2rem;
+    }
+}
+
+// Fix for long links overflowing
+
+a {
+  @extend .text-break;
+}
+
+// Style modifications
+
+.btn-primary {
+    @include variable-button($primary, $darker-green);
+    border-width: 1.5px;
+}
+
+.btn-outline-primary:hover {
+    color: white;
+}
+
+// Fix for misaligned svg icons
+.feather {
+    margin-bottom: 3px;
+}
+
+// Rounding for images
+.img-fluid {
+    @extend .rounded;
+    width: auto;
+    max-height: 50vh;
+}
+
+.before-none::before {
+    content: none;
+}
+
+// Borders that respect first-child
+
+.border-list .border-bottom:first-child {
+    @extend .border-top;
+}
+
+// Blockquotes
+
+blockquote {
+    @extend .blockquote;
+    padding-left: $spacer;
+    border-left: 3px solid $gray-300;
+}
+
+figcaption {
+    @extend .blockquote-footer;
+}
+
+// Some better styling for code blocks
+
+pre {
+    @extend .p-3;
+    @extend .rounded;
+    white-space: pre-wrap;
+}
+
+code {
+    background-color: $gray-200;
+    padding: 2px;
+    @extend .user-select-all,
+    .rounded;
+}
+
+pre code {
+    background-color: initial;
+    padding: 0;
+
+}
+
+// Dark mode stuff 
+
+$dark-mode-color: $gray-300;
+$dark-mode-secondary: $gray-500;
+$dark-bg-color: $gray-900;
+$dark-mode-primary: #61e865;
+
+:root {
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    /* Dark theme styles go here */
+    body {
+        color: $dark-mode-color;
+        background-color: $dark-bg-color;
+    }
+
+    table {
+        color: $dark-mode-color !important;
+    }
+
+    a,
+    .btn-outline-primary,
+    .nav-link {
+        color: $dark-mode-primary;
+    }
+
+    .btn-outline-primary {
+        border-color: $dark-mode-primary;
+    }
+
+    code {
+        color: $dark-bg-color;
+    }
+
+    .bg-body {
+        background-color: $dark-bg-color !important;
+    }
+
+    .text-muted {
+        color: $dark-mode-secondary !important;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: $dark-mode-color;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: darken(white, 50%);
+    }
+
+    .btn-outline-secondary {
+        color: $dark-mode-secondary;
+        border-color: $dark-mode-secondary;
+    }
+
+    .border-top,
+    .border-bottom,
+    hr {
+        border-color: $dark-mode-secondary !important;
+        opacity: 1;
+    }
+
+    .navbar-toggler {
+        color: $dark-mode-secondary;
+        border-color: $dark-mode-secondary;
+        background-color: $dark-mode-secondary;
+    }
+}

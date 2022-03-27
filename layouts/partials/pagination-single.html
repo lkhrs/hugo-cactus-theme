@@ -1,0 +1,23 @@
+{{ if and (not $.Site.Params.DisableReadOtherPosts) (or .NextInSection .PrevInSection) }}
+
+        <div class="row">
+            <div class="col-md-6 py-2 text-end text-nowrap">
+            {{ if .NextInSection }}
+                <a class="btn btn-outline-primary d-flex justify-content-between" href="{{ .NextInSection.Permalink }}">
+                    <span class="col-1">←</span>
+                    <span class="col-11 text-truncate">{{ .NextInSection.Title }}</span>
+                </a>
+            {{ end }}
+            </div>
+
+            <div class="col-md-6 py-2 text-end text-nowrap">
+            {{ if .PrevInSection }}
+                <a class="btn btn-outline-primary d-flex justify-content-between" href="{{ .PrevInSection.Permalink }}">
+                    <span class="col-11 text-truncate">{{ .PrevInSection.Title }}</span>
+                    <span class="col-1">→</span>
+                </a>
+            {{ end }}
+            </div>
+        </div>
+
+{{ end }}

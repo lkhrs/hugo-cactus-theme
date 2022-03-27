@@ -1,0 +1,18 @@
+<div class="row pt-5">
+        {{ if .Paginator.HasPrev }}
+            <div class="col-auto">
+                <a class="btn btn-outline-primary" href="{{ .Paginator.Prev.URL }}">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Newer posts</span>
+                </a>
+            </div>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+            <div class="col-auto text-end flex-grow-1">
+                <a class="btn btn-outline-primary" href="{{ .Paginator.Next.URL }}">
+                    <span class="button__text">Older posts</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </div>
+        {{ end }}
+</div>

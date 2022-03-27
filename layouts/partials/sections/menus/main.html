@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand navbar-light py-4">
+    <div class="container">
+        <a class="navbar-brand" href="{{ site.Home.RelPermalink }}" title="{{ site.Title }}">
+            {{ $logo := resources.Get "images/logo.svg" }}
+            <div class="text-primary" style="width: 45px;">
+                <img src="{{ $logo.Permalink }}" alt="Cactus logo" />
+            </div>
+        </a>
+        <div class="navbar-collapse" id="header01">
+            <ul class="navbar-nav ms-auto mt-3 mt-lg-0 mb-3 mb-lg-0 me-1 me-md-4">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                {{ if .HasChildren }}
+                <li class="nav-item me-1 me-md-4 {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+                    <a class="nav-link" href="#">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                <ul class="sub-menu">
+                    {{ range .Children }}
+                    <li class="nav-item me-1 me-md-4 {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                        <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+                {{ else }}
+                <li class="nav-item me-1 me-md-4">
+                    <a class="nav-link" href="{{ .URL }}">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ end }}
+            </ul>
+            <div>
+                <a class="btn btn-primary" href="/contact/">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

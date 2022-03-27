@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>
+        {{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}
+    </title>
+    {{/* SEO etc. */}}
+    {{ partial "sections/head/base.html" . }}
+    {{ if hugo.IsProduction }}
+    {{ partial "sections/head/production.html" . }}
+    {{ else }}
+    {{ partial "sections/head/development.html" . }}
+    {{ end }}
+    {{/*  Styles  */}}
+    {{ $options := dict "enableSourceMap" true }}
+    {{ if hugo.IsProduction}}
+    {{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
+    {{ end }}
+    {{ $styles := resources.Get "scss/styles.scss" }}
+    {{ $styles = $styles | resources.ToCSS $options }}
+    {{ if hugo.IsProduction }}
+    {{ $styles = $styles | fingerprint | resources.Minify }}
+    {{ end }}
+    <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+    {{/* Load Bootstrap JS. */}}
+    {{ $js := resources.Get "js/index.js" }}
+    {{ $params := dict }}
+    {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+    {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2018" "params" $params }}
+    {{ $js = $js | js.Build $opts }}
+    {{ if hugo.IsProduction }}
+    {{ $js = $js | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}" {{ if hugo.IsProduction }} integrity="" {{ end }} defer></script>
+    {{ if .Params.chartjs }}
+    <!-- Reload the page if it has chartjs due to turbo imcompatibility -->
+        <meta name="turbo-visit-control" content="reload">
+    {{ end }}
+</head>
+
+<body>
+    {{ partial "sections/menus/main.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "sections/footer.html" . }}
+</body>
+
+</html>

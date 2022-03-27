@@ -1,0 +1,51 @@
+// Colors
+$blue: #003f91 !default;
+$green: #309134 !default;
+$darker-green: #368038;
+$primary: $darker-green !default;
+
+// Fonts
+// @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// $font-family-sans-serif:
+//   // Cross-platform generic font family (default user interface font)
+//   system-ui,
+//   // Safari for macOS and iOS (San Francisco)
+//   -apple-system,
+//   // Windows
+//   "Segoe UI",
+//   // Android
+//   Roboto,
+//   // Basic web fallback
+//   "Helvetica Neue", Arial,
+//   // Linux
+//   "Noto Sans",
+//   "Liberation Sans",
+//   // Sans serif fallback
+//   sans-serif,
+//   // Emoji fonts
+//   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+// Some button changes
+
+@mixin variable-button($background, $border) {
+	$color: #fff;
+    @include button-variant($background, $border, $color);
+}
+
+// Markdown images
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+// Container max widths
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 720.001px,
+//   xl: 720.002px,
+//   xxl: 720.003px
+// );

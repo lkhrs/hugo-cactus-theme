@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main class="container">
+    <article class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-bold">
+                {{ .Title | markdownify }}
+            </h1>
+          <p class="fs-2 lead text-muted">{{ .Description }}</p>
+        </div>
+        {{ if .Params.Cover }}
+        <figure class="">
+            <img src="{{ .Params.Cover | absURL }}" alt="{{ .Title }}" />
+            {{ if .Params.CoverCaption }}
+            <figcaption class="">{{ .Params.CoverCaption | markdownify }}</figcaption>
+            {{ end }}
+        </figure>
+        {{ end }}
+        {{ if and (gt .WordCount 400 ) (.Params.toc) }}
+        <aside class="col-md-8" id="toc" data-turbo="false">
+        <hr />
+            <h2 class="fs-4 mt-0">Table of Contents</h2>
+            {{ .TableOfContents }}
+        <hr />
+        </aside>
+        {{- end }}
+        <div class="col-md-8">
+            {{ .Content }}
+        </div>
+    </article>
+    <hr class="col-md-8 mx-auto" />
+    <div class="post-info">
+        
+    </div>
+</main>
+{{ end }}

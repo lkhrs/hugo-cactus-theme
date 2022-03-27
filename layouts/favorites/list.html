@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ $paginator := .Paginate .Data.Pages }}
+<main class="container pt-md-5">
+    <h1 class="text-capitalize display-1 fw-bold">{{ .Title }}</h1>
+    <p class="fs-2 lead text-muted">{{ .Description }}</p>
+    {{ if .Content }}
+    <div class="content">{{ .Content }}</div>
+    {{ end }}
+    {{ range $paginator.Pages.GroupByDate "2006" }}
+    <h2 class="fs-3 row justify-content-end sticky-top py-3 mb-0 pe-2 bg-body">{{ .Key }}</h2>
+    <div class="border-list">
+    {{ range .Pages }}
+        <div class="border-bottom row row-cols-1 row-cols-md-auto py-2 align-items-center">
+            <div class="col col-md-7">
+                <a class="text-decoration-none" href="{{ .RelPermalink }}">
+                    <h2 class="fs-6 mb-0 py-2">
+                        {{ .Title }}
+                    </h2>
+                </a>
+            </div>
+            <div class="col d-none d-lg-block">
+                {{ range (.GetTerms "tags") | first 2 }}
+                <a class="btn btn-outline-secondary my-1 px-1 py-0" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+            <div class="col flex-grow-1 text-md-end">
+                <small class="text-muted font-monospace">
+                    {{ .PublishDate.Format "January 2, 2006"}}
+                </small>
+            </div>
+        </div>
+    {{ end }}
+    </div>
+    {{ end }}
+    {{ partial "pagination-list.html" . }}
+</main>
+{{ end }}

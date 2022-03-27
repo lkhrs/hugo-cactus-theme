@@ -1,0 +1,108 @@
+{{ define "main" }}
+<main class="container">
+    <article class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-bold">
+                {{ .Title | markdownify }}
+            </h1>
+            {{ with .Params.Description }}
+            <div class="fs-2 lead text-muted">{{ . }}</div>
+            {{ end }}
+            <div class="text-muted font-monospace row">
+                <p class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-calendar">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    {{ .PublishDate.Format "January 2, 2006"}}
+                </p>
+                <p class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-clock">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    {{ .Page.ReadingTime }} minute read
+                </p>
+            </div>
+        </div>
+        {{ if .Params.Cover }}
+        <figure class="text-center col-md-10">
+            <img class="img-fluid" src="images/{{ .Params.Cover }}" alt="{{ .Title }}" />
+            {{ if .Params.CoverCaption }}
+            <figcaption class="center">{{ .Params.CoverCaption | markdownify }}</figcaption>
+            {{ end }}
+        </figure>
+        {{ end }}
+        {{ if and (gt .WordCount 400 ) (.Params.toc) }}
+        <details class="col-md-8 mb-3" id="toc" data-turbo="false">
+            <summary class="fs-5">Table of Contents</summary>
+            {{ .TableOfContents }}
+        </details>
+        {{- end }}
+        {{ if .Params.Audio }}
+        <div class="post-audio">
+            <audio controls>
+                <source src="{{ .Params.Audio }}">
+            </audio>
+        </div>
+        {{ end }}
+        <div class="col-md-8">
+            {{ .Content }}
+        </div>
+    </article>
+    <hr class="col-md-8 mx-auto" />
+    <div class="col-md-8 mx-auto row text-muted font-monospace">
+        <div class="col-12 col-md-6">
+            <p>
+                {{ with .Params.tags }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-tag meta-icon">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <line x1="7" y1="7" x2="7" y2="7"></line>
+                </svg>
+                Tagged with
+                {{ range . -}}
+                <span><a class="btn btn-outline-primary px-1 py-0" href="{{ " tags/" | absLangURL }}{{ . | urlize
+                        }}/">{{.}}</a></span>
+                {{ end }}
+                {{ end }}
+            </p>
+            <p class="mb-md-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-file-text">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                {{ .Page.WordCount }} words
+                <!-- maybe this should say "wow" if over a certain threshold? -->
+            </p>
+        </div>
+        <p class="col-12 col-md-6 align-self-center text-md-end mb-0">
+            <a class="btn btn-outline-primary font-base d-block d-md-inline-block"
+                href="mailto:comments@lkhrs.com?subject=Re: “{{ .Title }}”">
+                <svg aria-hidden="true" class="feather" role="img" height="1em" width="1em" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor"
+                        d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z">
+                    </path>
+                </svg>&nbsp;&nbsp;Reply via email{{ if eq .Site.Params.Host "CFP" }}<noscript><br /><span
+                        class="legal">[Requires JavaScript activation,<br />due&nbsp;to <span class="nobrk">Cloudflare
+                            bot-blocking]</span></span></noscript>{{- end -}}
+            </a>
+        </p>
+    </div>
+    <hr class="col-md-8 mx-auto">
+    <div class="col-md-8 mx-auto container">{{ partial "pagination-single.html" . }}</div>
+</main>
+{{ end }}

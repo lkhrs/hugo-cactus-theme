@@ -1,0 +1,70 @@
+{{ define "main" }}
+<section class="pb-lg-5">
+    <div class="container pt-lg-5">
+        <div class="row align-items-center justify-content-center mb-md-5">
+            <div class="col-12 col-md-8 mb-3 mb-md-0 me-auto">
+                <h1 class="display-3 fw-bold">
+                    Hi! I'm Luke Harris
+                </h1>
+                <h2 class="display-5 text-muted mb-md-5">And I make websites.</h2>
+                <p class="fs-4 lead text-muted mb-md-5">
+                    I'm a web designer specializing in WordPress, Webflow, and static site generators. I live and work remotely in Corpus Christi, Texas.
+                </p>
+                <div class="d-flex flex-wrap">
+                    <a class="btn btn-primary me-2 mb-2 mb-sm-0" href="/contact/">
+                        Contact Me
+                    </a>
+                    <a class="btn btn-outline-secondary mb-2 mb-sm-0" href="/about/">
+                        About Me
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <figure class="figure m-0">
+                    {{ partial "helpers/wrapped-image" (dict "alt" "Luke in the shower" "image" (partial "helpers/lib/image-handling/find-image-src" (dict "src" "layouterror.jpg" )) "page" .Page "class" "img-fluid" "noImageWrapper" "true") }}
+                    <figcaption class="figure-caption mt-1 text-center before-none">The author encountering a real-life layout issue.</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="text-center" aria-hidden="true">
+            <a class="p-4" href="#posts">
+                <svg class="text-muted" height="48" width="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="py-4">
+    <div class="container">
+        <div class="row py-3">
+            <h2 id="posts">Latest Blog Posts</h2>
+        </div>
+        <div class="row border-list">
+            {{/* List the last blog entries. */}}
+            {{ $blog := site.GetPage "blog" }}
+            {{ range $blog.RegularPagesRecursive | first 6 }}
+            <div class="row row-cols-1 row-cols-md-auto py-2 border-bottom align-items-center">
+                <div class="col col-md-7">
+                    <a class="text-decoration-none" href="{{ .RelPermalink }}">
+                        <h2 class="fs-6 mb-0 py-2">
+                            {{ .Title }}
+                        </h2>
+                    </a>
+                </div>
+                <div class="col d-none d-lg-block">
+                    {{ range (.GetTerms "tags") | first 2 }}
+                    <a class="btn btn-outline-secondary my-1 px-1 py-0" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                    {{ end }}
+                </div>
+                <div class="col flex-grow-1 text-md-end">
+                    <small class="text-muted font-monospace">
+                        {{ .PublishDate.Format "January 2, 2006"}}
+                    </small>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
