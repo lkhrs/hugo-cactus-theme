@@ -32,10 +32,11 @@
             </div>
         </div>
         {{ if .Params.Cover }}
-        <figure class="text-center col-md-10">
-            <img class="img-fluid" src="images/{{ .Params.Cover }}" alt="{{ .Title }}" />
+        {{ $featuredImage := partial "helpers/featured-image" . }}
+        <figure class="figure text-center col-md-10">
+             {{ partial "helpers/wrapped-image" (dict "alt" .Title "image" $featuredImage "page" .Page "class" "img-fluid" "noImageWrapper" "true") }}
             {{ if .Params.CoverCaption }}
-            <figcaption class="center">{{ .Params.CoverCaption | markdownify }}</figcaption>
+            <figcaption class="figure-caption center">{{ .Params.CoverCaption | markdownify }}</figcaption>
             {{ end }}
         </figure>
         {{ end }}
