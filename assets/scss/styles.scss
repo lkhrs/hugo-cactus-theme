@@ -126,6 +126,7 @@ code {
     @extend .user-select-all,
     .rounded;
 }
+a code {color: initial;}
 
 pre code {
     background-color: initial;
@@ -166,7 +167,7 @@ $dark-mode-primary: #61e865;
         border-color: $dark-mode-primary;
     }
 
-    code {
+    code, a code {
         color: $dark-bg-color;
     }
 
