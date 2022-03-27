@@ -20,9 +20,9 @@
                 </div>
             </div>
             <div class="col col-md-4">
-                <figure class="figure m-0">
-                    {{ partial "helpers/wrapped-image" (dict "alt" "Luke in the shower" "image" (partial "helpers/lib/image-handling/find-image-src" (dict "src" "layouterror.jpg" )) "page" .Page "class" "vh-10" "noImageWrapper" "true") }}
-                    <figcaption class="figure-caption mt-1 text-center before-none">test The author encountering a real-life layout issue.</figcaption>
+                <figure class="figure d-block text-center">
+                    {{ partial "helpers/wrapped-image" (dict "alt" "Luke in the shower" "image" (partial "helpers/lib/image-handling/find-image-src" (dict "src" "layouterror.jpg" )) "page" .Page "class" "img-fluid h-25" "noImageWrapper" "true") }}
+                    <figcaption class="figure-caption mt-1 text-center before-none">Me, encountering a real life layout issue.</figcaption>
                 </figure>
             </div>
         </div>
