@@ -1,2 +1,2 @@
 module:
-  replacements: github.com/lkhrs/image-handling-mod-hugo-dfd -> cactus
+  replacements: "github.com/lkhrs/hugo-cactus-theme -> cactus"
