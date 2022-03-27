@@ -1,0 +1,2 @@
+module:
+  replacements: github.com/lkhrs/image-handling-mod-hugo-dfd -> cactus
