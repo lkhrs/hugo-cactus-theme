@@ -70,8 +70,7 @@
                 </svg>
                 Tagged with
                 {{ range . -}}
-                <span><a class="btn btn-outline-primary px-1 py-0" href="{{ " tags/" | absLangURL }}{{ . | urlize
-                        }}/">{{.}}</a></span>
+                <span><a class="btn btn-outline-primary px-1 py-0" href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{.}}</a></span>
                 {{ end }}
                 {{ end }}
             </p>
