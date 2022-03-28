@@ -26,6 +26,22 @@
     {{ $styles = $styles | fingerprint | resources.Minify }}
     {{ end }}
     <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+    {{/* Disable all JS
+    <!-- Load Bootstrap JS -->
+    {{ $js := resources.Get "js/index.js" }}
+    {{ $params := dict }}
+    {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+    {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2018" "params" $params }}
+    {{ $js = $js | js.Build $opts }}
+    {{ if hugo.IsProduction }}
+    {{ $js = $js | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}" {{ if hugo.IsProduction }} integrity="" {{ end }} defer></script>
+    {{ if .Params.chartjs }}
+    <!-- Reload the page if it has chartjs due to turbo imcompatibility -->
+        <meta name="turbo-visit-control" content="reload">
+    {{ end }}
+    */}}
 </head>
 
 <body>
