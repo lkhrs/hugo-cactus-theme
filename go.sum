@@ -3,6 +3,6 @@ github.com/gohugoio/hugo-mod-bootstrap-scss/v5 v5.20101.20300/go.mod h1:/FiWjAJy
 github.com/gohugoio/hugo-mod-jslibs-dist/popperjs/v2 v2.21100.20000/go.mod h1:mFberT6ZtcchrsDtfvJM7aAH2bDKLdOnruUHl0hlapI=
 github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.0.0-20220127163053-14169e3a1dd0 h1:LZtJpLdrobw8A+Si1vF16Vfig9cY7+4MdbtKyXfiY4Y=
 github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.0.0-20220127163053-14169e3a1dd0/go.mod h1:7YpZ5H9gE7M/Br+1g052hfMl6jZs1x+yU0hdJfSiB14=
-github.com/lkhrs/image-handling-mod-hugo-dfd v0.0.0-20220327033804-7b832c1edfca h1:2oJcoN25UeBS59Hva1IjHz2MdfezM8Gh1QTYKoWLC8Q=
-github.com/lkhrs/image-handling-mod-hugo-dfd v0.0.0-20220327033804-7b832c1edfca/go.mod h1:FvoPxH20Rp393/hQiw5VdZG/p81iTCojTsvFNvcOWtM=
+github.com/lkhrs/image-handling-mod-hugo-dfd v0.0.0-20220328173521-3f5c21773d85 h1:cla1/m07JA2VeCXeetTjw0DjyivJSOkMC/qGTpetdds=
+github.com/lkhrs/image-handling-mod-hugo-dfd v0.0.0-20220328173521-3f5c21773d85/go.mod h1:FvoPxH20Rp393/hQiw5VdZG/p81iTCojTsvFNvcOWtM=
 github.com/twbs/bootstrap v5.1.3+incompatible/go.mod h1:fZTSrkpSf0/HkL0IIJzvVspTt1r9zuf7XlZau8kpcY0=
