@@ -133,6 +133,12 @@ pre code {
     padding: 0;
 
 }
+.twitter-tweet {
+    @extend .blockquote;
+    font: inherit !important;
+    font-size: 1.25rem !important;
+    color: inherit !important;
+}
 
 // Dark mode stuff 
 
