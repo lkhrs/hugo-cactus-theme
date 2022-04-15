@@ -4,11 +4,11 @@
         <div class="row align-items-center justify-content-center mb-md-5">
             <div class="col-12 col-md-8 mb-3 mb-md-0 me-auto">
                 <h1 class="display-3 fw-bold">
-                    Hi! I'm Luke Harris
+                    {{ .Page.Params.lead }}
                 </h1>
-                <h2 class="display-5 text-muted mb-md-5">And I make websites.</h2>
+                <h2 class="display-5 text-muted mb-md-5">{{ .Page.Params.sublead }}</h2>
                 <p class="fs-4 lead text-muted mb-md-5">
-                    I'm a web designer specializing in WordPress, Webflow, and static site generators. I live and work remotely in Corpus Christi, Texas.
+                    {{ .Summary }}
                 </p>
                 <div class="d-flex flex-wrap">
                     <a class="btn btn-primary me-2 mb-2 mb-sm-0" href="/contact/">
