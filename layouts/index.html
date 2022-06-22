@@ -7,9 +7,9 @@
                     {{ .Page.Params.lead }}
                 </h1>
                 <h2 class="display-5 text-muted mb-md-5">{{ .Page.Params.sublead }}</h2>
-                <p class="fs-4 lead text-muted mb-md-5">
-                    {{ .Summary }}
-                </p>
+                <div class="fs-4 lead text-muted mb-md-5">
+                    {{ .Content }}
+                </div>
                 <div class="d-flex flex-wrap">
                     <a class="btn btn-primary me-2 mb-2 mb-sm-0" href="/contact/">
                         Contact Me
@@ -21,14 +21,18 @@
             </div>
             <div class="col col-md-4">
                 <figure class="figure d-block text-center text-md-end">
-                    {{ partial "helpers/wrapped-image" (dict "alt" "Luke in the shower" "image" (partial "helpers/lib/image-handling/find-image-src" (dict "src" "layouterror.jpg" )) "page" .Page "class" "img-fluid" "noImageWrapper" "true" "loading" "eager") }}
-                    <figcaption class="figure-caption mt-1 text-center before-none">Me, encountering a real life layout issue.</figcaption>
+                    {{ partial "helpers/wrapped-image" (dict "alt" "Luke in the shower" "image" (partial
+                    "helpers/lib/image-handling/find-image-src" (dict "src" "layouterror.jpg" )) "page" .Page "class"
+                    "img-fluid" "noImageWrapper" "true" "loading" "eager") }}
+                    <figcaption class="figure-caption mt-1 text-center before-none">Me, encountering a real life layout
+                        issue.</figcaption>
                 </figure>
             </div>
         </div>
         <div class="text-center">
-            <a class="p-4" href="#posts"  aria-label="Jump to blog posts section on current page">
-                <svg class="text-muted" height="48" width="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <a class="p-4" href="#posts" aria-label="Jump to blog posts section on current page">
+                <svg class="text-muted" height="48" width="48" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </a>
