@@ -67,6 +67,11 @@ a {
   @extend .text-break;
 }
 
+// Heading anchors
+.anchor {
+    opacity: .8;
+}
+
 // Style modifications
 
 .btn-primary {
