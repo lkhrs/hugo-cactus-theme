@@ -148,6 +148,15 @@ table {
     @extend .table;
 }
 
+// Fix for iframe dimensions when inline styling is disallowed by CSP
+iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+    min-width: 300px;
+    min-height: 300px;
+    margin-bottom: 1rem;
+}
+
 // Dark mode stuff 
 
 $dark-mode-color: $gray-300;
