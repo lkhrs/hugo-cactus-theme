@@ -11,9 +11,9 @@
     {{/* SEO etc. */}}
     {{ partial "sections/head/base.html" . }}
     {{ if hugo.IsProduction }}
-    {{ partial "sections/head/production.html" . }}
+    {{ partialCached "sections/head/production.html" . }}
     {{ else }}
-    {{ partial "sections/head/development.html" . }}
+    {{ partialCached "sections/head/development.html" . }}
     {{ end }}
     {{/*  Styles  */}}
     {{ $options := dict "enableSourceMap" true }}
@@ -45,9 +45,9 @@
 </head>
 
 <body>
-    {{ partial "sections/menus/main.html" . }}
+    {{ partialCached "sections/menus/main.html" . }}
     {{ block "main" . }}{{ end }}
-    {{ partial "sections/footer.html" . }}
+    {{ partialCached "sections/footer.html" . }}
 </body>
 
 </html>
