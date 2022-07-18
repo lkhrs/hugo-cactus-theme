@@ -117,7 +117,9 @@
 
       {{ $chartData := printf "%s" $chartPost | printf "%s%s" $chartYearCount | printf "%s%s" $chartMid | printf "%s%s" $chartYearKeys | printf "%s%s" $chartPre | printf "%s" }}
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js" type="text/javascript"></script>
+      {{ $chartjs := resources.Get "js/chart.min.js" | resources.Minify }}
+
+      <script src="{{ $chartjs.RelPermalink }}" type="text/javascript"></script>
       <script type="text/javascript">
         var ctx = document.getElementById('yearchart').getContext('2d');
         var options = {{ $chartData | safeJS }};
