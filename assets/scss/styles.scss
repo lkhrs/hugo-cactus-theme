@@ -92,7 +92,6 @@ a {
 .img-fluid {
     @extend .rounded;
     width: auto;
-    max-height: 50vh;
 }
 
 .before-none::before {
