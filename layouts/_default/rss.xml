@@ -28,7 +28,7 @@
     {{ range $pages }}
     {{- $titleThis := .Title | markdownify -}}
     {{- $authorEmail := .Site.Author.email -}}
-    {{- $emailReplyHTML := printf "%s%s%s%s%s" `<p><a href="mailto:` $authorEmail `?subject=Re: “` $titleThis `”">Reply via email</a></p>` | safeHTML  -}}
+    {{- $emailReplyHTML := printf "%s%s%s%s%s" `<p><a href="mailto:` $authorEmail `?subject=Re: ` $titleThis `">Reply via email</a></p>` | safeHTML  -}}
     {{- $contentMD := .Content -}}
     {{- $finalHTMLContent := printf "%s%s" $contentMD $emailReplyHTML -}}
     <item>
